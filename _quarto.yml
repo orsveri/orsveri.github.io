@@ -7,24 +7,21 @@ website:
     background: primary
     search: true
     left:
-      - about.qmd
+      - text: "About"
+        file: about.qmd
+      - text: "Tutorials"
+        file: about.qmd
 
   sidebar:
-    style: "docked"
-    contents:
-      - section: "Avatar"
-        contents:
-          image: profile.jpg
-      - section: "Links"
-        contents:
-          - icon: github
-            href: https://github.com/orsveri
-          - icon: linkedin
-            href: https://linkedin.com/orsveri
-format:
-  html:
-    theme: cosmo
-    css: styles.css
+    - title: "Tutorials"
+      style: "docked"
+      background: light
+      contents:
+        - image: profile.jpg
+        - icon: github
+          href: https://github.com/orsveri
+        - icon: linkedin
+          href: https://linkedin.com/orsveri
     
 execute:
   freeze: auto
