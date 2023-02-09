@@ -4,12 +4,21 @@ project:
 website:
   title: "orsveri.github.io"
   navbar:
-    right:
+    left:
       - about.qmd
-      - icon: github
-        href: https://github.com/
-      - icon: twitter
-        href: https://twitter.com
+
+  sidebar:
+    style: "docked"
+    content:
+      - section: "Avatar"
+        contents:
+          image: profile.jpg
+      - section: "Links"
+        contents:
+          - icon: github
+            href: https://github.com/orsveri
+          - icon: linkedin
+            href: https://linkedin.com/orsveri
 format:
   html:
     theme: cosmo
