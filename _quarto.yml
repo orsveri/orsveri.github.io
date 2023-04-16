@@ -8,20 +8,34 @@ website:
     search: true
     left:
       - text: "About"
-        file: about.qmd
-      - text: "Tutorials"
-        file: about.qmd
+        file: index.qmd
+      - text: "Posts"
+        file: index2.qmd
+      - text: "Listing page"
+        file: index2.qmd
 
   sidebar:
     - title: "Tutorials"
       style: "docked"
       background: light
-      contents:
-        - image: profile.jpg
+      logo: logo.jpg
+      tools:
         - icon: github
           href: https://github.com/orsveri
         - icon: linkedin
           href: https://linkedin.com/orsveri
+      contents:
+        - text: "About"
+          file: index.qmd
+        - text: "Tutorials"
+          file: index2.qmd
+        - text: "Listing page"
+          file: index2.qmd
+          
+format:
+  html:
+    theme: cosmo
+    css: styles.css
     
 execute:
   freeze: auto
