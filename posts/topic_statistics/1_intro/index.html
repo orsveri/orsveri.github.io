@@ -1,0 +1,873 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.3.433">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="orsveri">
+<meta name="dcterms.date" content="2023-02-20">
+
+<title>orsveri - Introduction to statistics</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../../">
+<script src="../../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<style>
+
+      .quarto-title-block .quarto-title-banner {
+        background-image: url(stat_vs_prob_banner.jpg);
+background-size: cover;
+      }
+</style>
+
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<link rel="stylesheet" href="../../../styles.css">
+</head>
+
+<body class="nav-sidebar docked nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container">
+    <a class="navbar-brand" href="../../../index.html">
+    <span class="navbar-title">orsveri</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link active" href="../../../index.html" rel="" target="" aria-current="page">
+ <span class="menu-text">About</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../../index2.html" rel="" target="">
+ <span class="menu-text">Posts</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../../index2.html" rel="" target="">
+ <span class="menu-text">Listing page</span></a>
+  </li>  
+</ul>
+            <div class="quarto-navbar-tools ms-auto">
+</div>
+          </div> <!-- /navcollapse -->
+      </div> <!-- /container-fluid -->
+    </nav>
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Introduction to statistics</li></ol></nav>
+      <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+      </a>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<header id="title-block-header" class="quarto-title-block default page-columns page-full">
+  <div class="quarto-title-banner page-columns page-full">
+    <div class="quarto-title column-body">
+      <h1 class="title">Introduction to statistics</h1>
+            <p class="subtitle lead">Statistics notes - part 1</p>
+                                <div class="quarto-categories">
+                <div class="quarto-category">statistics</div>
+                <div class="quarto-category">probability theory</div>
+              </div>
+                  </div>
+  </div>
+    
+  
+  <div class="quarto-title-meta">
+
+      <div>
+      <div class="quarto-title-meta-heading">Author</div>
+      <div class="quarto-title-meta-contents">
+               <p>orsveri </p>
+            </div>
+    </div>
+      
+      <div>
+      <div class="quarto-title-meta-heading">Published</div>
+      <div class="quarto-title-meta-contents">
+        <p class="date">February 20, 2023</p>
+      </div>
+    </div>
+    
+      
+    </div>
+    
+  
+  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation docked overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header sidebar-header-stacked">
+      <a href="../../../index.html" class="sidebar-logo-link">
+      <img src="../../../logo.jpg" alt="" class="sidebar-logo py-0 d-lg-inline d-none">
+      </a>
+      <div class="sidebar-tools-main">
+    <a href="https://github.com/orsveri" rel="" title="" class="quarto-navigation-tool px-1" aria-label=""><i class="bi bi-github"></i></a>
+    <a href="https://linkedin.com/orsveri" rel="" title="" class="quarto-navigation-tool px-1" aria-label=""><i class="bi bi-linkedin"></i></a>
+</div>
+      </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">About</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../index2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Listing page</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../index2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Listing page</span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#statistics-and-probability-theory" id="toc-statistics-and-probability-theory" class="nav-link active" data-scroll-target="#statistics-and-probability-theory">Statistics and probability theory</a></li>
+  <li><a href="#descriptive-statistics" id="toc-descriptive-statistics" class="nav-link" data-scroll-target="#descriptive-statistics">Descriptive statistics</a>
+  <ul class="collapse">
+  <li><a href="#categorical-qualitative-data" id="toc-categorical-qualitative-data" class="nav-link" data-scroll-target="#categorical-qualitative-data">Categorical (qualitative) data</a></li>
+  <li><a href="#numerical-quantitative-data" id="toc-numerical-quantitative-data" class="nav-link" data-scroll-target="#numerical-quantitative-data">Numerical (quantitative) data</a></li>
+  <li><a href="#the-principle-of-small-multiples" id="toc-the-principle-of-small-multiples" class="nav-link" data-scroll-target="#the-principle-of-small-multiples">The principle of small multiples</a></li>
+  </ul></li>
+  <li><a href="#inferential-statistics-statistical-inference" id="toc-inferential-statistics-statistical-inference" class="nav-link" data-scroll-target="#inferential-statistics-statistical-inference">Inferential statistics (Statistical inference)</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content quarto-banner-title-block" id="quarto-document-content">
+
+
+
+
+<div class="callout callout-style-simple callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+About this series
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>This is an article from the series about statistics (and probability theory). The motivation behind this series is to retain knowledge while taking courses, reading books and articles. I write articles about something that I missed before, found interesting or possibly useful to me in the future. These articles do not constitute a course, they are just a collection of my personal study notes or summaries on different topics related to statistics.</p>
+</div>
+</div>
+<section id="statistics-and-probability-theory" class="level2">
+<h2 class="anchored" data-anchor-id="statistics-and-probability-theory">Statistics and probability theory</h2>
+<p>Typically, probability theory and statistics go side by side in the curriculum, so students do not always understand the difference between the subjects. Indeed, we constantly use them together, then why do we need to separate them at all?</p>
+<p>Some prefer to explain the difference through model and data:</p>
+<ul>
+<li>In probability theory, we take a model (e.g.&nbsp;fair coin) and predict how likely it is to get some event with this model (e.g.&nbsp;tails 5 times in a row).</li>
+<li>In statistics, we take data (e.g.&nbsp;number of heads and tails in 100 tosses) and infer what is the model behind this data (e.g.&nbsp;biased coin).</li>
+</ul>
+<p>This may give the impression that probability theory and statistics solve problems that are inverse to each other. But this is not exactly the case.</p>
+<div id="fig-stat_vs_prob" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="stat_vs_prob.jpg" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">Figure&nbsp;1: Statistics VS Probability</figcaption>
+</figure>
+</div>
+<p><strong>Probability theory</strong> is the branch of mathematics that deals with the study of randomness, uncertainty, and the likelihood of events occurring. The key concepts in probability theory include events and random variables, probability laws and probability distributions.</p>
+<p><strong>Statistics</strong> is the branch of mathematics that deals with collecting, analysing, and interpreting data. It involves the use of mathematical and computational tools to not only make inferences from data, but also to test hypotheses and predict future events. Statistics provides ways to design efficient experiments that eliminate time-consuming trial and error. Key concepts of statistics include data, variability, confidence intervals, sampling, inference.</p>
+<p>So they deal with completely different problems and use different methods and tools.</p>
+<div class="cell" data-tags="[]" data-execution_count="1">
+<div id="tab-stat_vs_prob" class="cell-output cell-output-display" data-execution_count="1">
+<table class="table table-sm table-striped small">
+<caption>Key subfields </caption>
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Probability theory</th>
+<th style="text-align: left;">Statistics</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><strong><em>Stochastic processes:</em></strong> This subfield deals with the study of random processes that evolve over time. Examples include random walks, Brownian motion, and Markov processes.</td>
+<td style="text-align: left;"><strong><em>Descriptive statistics:</em></strong> This subfield deals with the organisation, summarisation, and graphical representation of data, such as mean, median, mode, standard deviation, and histograms.</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong><em>Information theory:</em></strong> This subfield deals with the quantification and transmission of information in the presence of noise and uncertainty. Key concepts include entropy, mutual information, and channel capacity.</td>
+<td style="text-align: left;"><strong><em>Inferential statistics:</em></strong> This subfield deals with making inferences about a population based on a sample of data, using tools such as hypothesis testing, confidence intervals, and regression analysis.</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><strong><em>Probability distributions:</em></strong> This subfield deals with the study of probability distributions, which describe the probabilities of different outcomes in a random variable.</td>
+<td style="text-align: left;"><strong><em>Experimental design:</em></strong> This subfield deals with the planning and analysis of controlled experiments, including randomisation, blocking, and factorial designs.</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong><em>Random matrix theory:</em></strong> This subfield deals with the study of matrices with random elements. It has applications in physics, engineering and other fields.</td>
+<td style="text-align: left;"><strong><em>Time series analysis:</em></strong> This subfield deals with the modeling and analysis of data that vary over time, such as stock prices, weather patterns and economic indicators.</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p>Nevertheless, statistics and probability theory are closely related fields, with some subjects tightly connected. For example, Bayesian statistics.</p>
+<blockquote class="blockquote">
+<p><em><strong>Bayesian statistics</strong> is considered a subfield of probability theory because it uses probability theory to model and quantify uncertainty in statistical inference. In contrast to traditional frequentist statistics, which assumes that probabilities are based on frequencies of events in long-run experiments, Bayesian statistics assigns probabilities to events based on prior knowledge and data.</em></p>
+<p><em>In Bayesian statistics, prior beliefs about the probability of an event are combined with new data to update the probability estimates. The resulting probability distribution is then used to make statistical inferences and predictions. Bayesian statistics also allows for the incorporation of expert knowledge and subjective opinions into the analysis.</em></p>
+</blockquote>
+<p>In what follows, I will explore some topics in statistics and probability theory in order to close the gaps left after my university studies and to better understand both these fields.</p>
+</section>
+<section id="descriptive-statistics" class="level2">
+<h2 class="anchored" data-anchor-id="descriptive-statistics">Descriptive statistics</h2>
+<blockquote class="blockquote">
+<p><em>People prefer to look at pictures or figures rather than at numbers.</em></p>
+</blockquote>
+<p>The two most important functions of descriptive statistics:</p>
+<ul>
+<li>communicate information</li>
+<li>support reasoning about data</li>
+</ul>
+<p>Choosing an appropriate representation, the first thing you need to look at is whether your data is categorical or numerical.</p>
+<section id="categorical-qualitative-data" class="level3">
+<h3 class="anchored" data-anchor-id="categorical-qualitative-data">Categorical (qualitative) data</h3>
+<p><u>Categorical data</u> usually represents data divided into groups (or categories) and can be visualised using a <strong>pie chart</strong> and <strong>dot plot</strong>.</p>
+<div class="cell" data-execution_count="2">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Data from: https://www.statista.com/statistics/301726/mayonnaise-usage-frequency-in-the-uk/</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.cm <span class="im">as</span> cm</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> dot_plot(ax, x_values, y_values, color):</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>    ax.plot(</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>        x_values,</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>        y_values,</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>        marker<span class="op">=</span><span class="st">'$</span><span class="ch">\\</span><span class="st">bigoplus$'</span>, </span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>        markersize<span class="op">=</span><span class="dv">12</span>, </span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>        linestyle<span class="op">=</span><span class="st">'None'</span>,</span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>        color<span class="op">=</span>color</span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> set_axis(ax, title, xlabel):</span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>    ax.set_xlabel(xlabel)</span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>    ax.set_title(title)</span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>    ax.set_axisbelow(<span class="va">True</span>)</span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>    ax.grid(which<span class="op">=</span><span class="st">'major'</span>, linestyle<span class="op">=</span><span class="st">'-'</span>, linewidth<span class="op">=</span><span class="st">'0.5'</span>, color<span class="op">=</span><span class="st">'grey'</span>)</span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a>    ax.minorticks_on()</span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a>    ax.grid(which<span class="op">=</span><span class="st">'minor'</span>, linestyle<span class="op">=</span><span class="st">':'</span>, linewidth<span class="op">=</span><span class="st">'0.5'</span>, color<span class="op">=</span><span class="st">'grey'</span>)</span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a><span class="co"># data</span></span>
+<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a>mayonnaise_consumption <span class="op">=</span> pd.DataFrame({</span>
+<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a>    <span class="st">'Group'</span>: [</span>
+<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a>        <span class="st">'Never'</span>, <span class="st">'Less than </span><span class="ch">\n</span><span class="st">once a week'</span>, <span class="st">'Once a week'</span>, <span class="st">'2-3 times </span><span class="ch">\n</span><span class="st">a week'</span>, <span class="st">'Once a day </span><span class="ch">\n</span><span class="st">or more'</span></span>
+<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a>    ], </span>
+<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a>    <span class="st">'Number'</span>: [<span class="dv">798250</span>, <span class="dv">6575180</span>, <span class="dv">4471460</span>, <span class="dv">6506960</span>, <span class="dv">1503030</span>]</span>
+<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a>})</span>
+<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a>total_people <span class="op">=</span> <span class="bu">sum</span>(mayonnaise_consumption[<span class="st">'Number'</span>])</span>
+<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a><span class="co"># Prepare subplots</span></span>
+<span id="cb1-37"><a href="#cb1-37" aria-hidden="true" tabindex="-1"></a>fig, (ax1, ax2, ax3) <span class="op">=</span> plt.subplots(<span class="dv">1</span>, <span class="dv">3</span>, figsize<span class="op">=</span>(<span class="dv">13</span>, <span class="dv">3</span>), gridspec_kw<span class="op">=</span>{<span class="st">'width_ratios'</span>: [<span class="dv">3</span>, <span class="dv">1</span>, <span class="dv">2</span>]}, num<span class="op">=</span><span class="st">'dot_plot'</span>)</span>
+<span id="cb1-38"><a href="#cb1-38" aria-hidden="true" tabindex="-1"></a>fig.suptitle(<span class="st">'Mayonnaise usage frequency in the UK (2021)'</span>, fontsize<span class="op">=</span><span class="dv">14</span>)</span>
+<span id="cb1-39"><a href="#cb1-39" aria-hidden="true" tabindex="-1"></a>fig.subplots_adjust(top<span class="op">=</span><span class="fl">0.8</span>)</span>
+<span id="cb1-40"><a href="#cb1-40" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-41"><a href="#cb1-41" aria-hidden="true" tabindex="-1"></a><span class="co"># Pie chart</span></span>
+<span id="cb1-42"><a href="#cb1-42" aria-hidden="true" tabindex="-1"></a>wedges, texts, autotexts <span class="op">=</span> ax1.pie(</span>
+<span id="cb1-43"><a href="#cb1-43" aria-hidden="true" tabindex="-1"></a>    mayonnaise_consumption[<span class="st">'Number'</span>], </span>
+<span id="cb1-44"><a href="#cb1-44" aria-hidden="true" tabindex="-1"></a>    autopct<span class="op">=</span><span class="st">'</span><span class="sc">%1.1f%%</span><span class="st">'</span>,</span>
+<span id="cb1-45"><a href="#cb1-45" aria-hidden="true" tabindex="-1"></a>    textprops<span class="op">=</span><span class="bu">dict</span>(color<span class="op">=</span><span class="st">'w'</span>)</span>
+<span id="cb1-46"><a href="#cb1-46" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb1-47"><a href="#cb1-47" aria-hidden="true" tabindex="-1"></a>plt.setp(autotexts, size<span class="op">=</span><span class="dv">12</span>, weight<span class="op">=</span><span class="st">"bold"</span>)</span>
+<span id="cb1-48"><a href="#cb1-48" aria-hidden="true" tabindex="-1"></a>ax1.set_title(<span class="st">'Pie chart'</span>)</span>
+<span id="cb1-49"><a href="#cb1-49" aria-hidden="true" tabindex="-1"></a><span class="co"># pie chart legend</span></span>
+<span id="cb1-50"><a href="#cb1-50" aria-hidden="true" tabindex="-1"></a>ax2.axis(<span class="st">"off"</span>)</span>
+<span id="cb1-51"><a href="#cb1-51" aria-hidden="true" tabindex="-1"></a>ax2.legend(</span>
+<span id="cb1-52"><a href="#cb1-52" aria-hidden="true" tabindex="-1"></a>    wedges, </span>
+<span id="cb1-53"><a href="#cb1-53" aria-hidden="true" tabindex="-1"></a>    mayonnaise_consumption[<span class="st">'Group'</span>],</span>
+<span id="cb1-54"><a href="#cb1-54" aria-hidden="true" tabindex="-1"></a>    title<span class="op">=</span><span class="st">"Frequency"</span>,</span>
+<span id="cb1-55"><a href="#cb1-55" aria-hidden="true" tabindex="-1"></a>    bbox_to_anchor<span class="op">=</span>(<span class="fl">0.4</span>,<span class="dv">1</span>)</span>
+<span id="cb1-56"><a href="#cb1-56" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb1-57"><a href="#cb1-57" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-58"><a href="#cb1-58" aria-hidden="true" tabindex="-1"></a><span class="co"># Dot plot (using scatter plot)</span></span>
+<span id="cb1-59"><a href="#cb1-59" aria-hidden="true" tabindex="-1"></a>dot_plot(ax<span class="op">=</span>ax3, x_values<span class="op">=</span>mayonnaise_consumption[<span class="st">'Number'</span>] <span class="op">/</span> total_people <span class="op">*</span> <span class="dv">100</span>, y_values<span class="op">=</span>mayonnaise_consumption[<span class="st">'Group'</span>], color<span class="op">=</span><span class="st">'k'</span>)<span class="op">;</span></span>
+<span id="cb1-60"><a href="#cb1-60" aria-hidden="true" tabindex="-1"></a>set_axis(ax<span class="op">=</span>ax3, title<span class="op">=</span><span class="st">'Dot plot'</span>, xlabel<span class="op">=</span><span class="st">'Percent'</span>)</span>
+<span id="cb1-61"><a href="#cb1-61" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-62"><a href="#cb1-62" aria-hidden="true" tabindex="-1"></a>plt.show(<span class="st">'dot_plot'</span>)</span>
+<span id="cb1-63"><a href="#cb1-63" aria-hidden="true" tabindex="-1"></a>fig.clear()</span>
+<span id="cb1-64"><a href="#cb1-64" aria-hidden="true" tabindex="-1"></a>plt.close(fig)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display">
+<p><img src="index_files/figure-html/cell-3-output-1.png" class="img-fluid"></p>
+</div>
+</div>
+<p>Also we can use a variant of <strong>bar chart</strong>, very similar to dot plot: instead of representing values with markers, we just draw bars. When we have several variables to visualise, one graph type may be better than the other in terms of visually separating variables from each other. Let’s make up some extra data to demonstrate this case:</p>
+<div class="cell" data-tags="[]" data-execution_count="3">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>mayonnaise_consumption1_number <span class="op">=</span> mayonnaise_consumption[<span class="st">'Number'</span>] <span class="op">/</span> total_people <span class="op">*</span> <span class="dv">100</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="co"># made-up data</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>mayonnaise_consumption2_number <span class="op">=</span> [<span class="dv">1008250</span>, <span class="dv">6575180</span>, <span class="dv">4671460</span>, <span class="dv">6506960</span>, <span class="dv">1803030</span>]</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>total_people2 <span class="op">=</span> <span class="bu">sum</span>(mayonnaise_consumption2_number)</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>mayonnaise_consumption3_number <span class="op">=</span> [<span class="dv">838250</span>, <span class="dv">6875180</span>, <span class="dv">4171460</span>, <span class="dv">6506960</span>, <span class="dv">1103030</span>]</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>total_people3 <span class="op">=</span> <span class="bu">sum</span>(mayonnaise_consumption3_number)</span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>mayonnaise_consumption2_number <span class="op">=</span> [n <span class="op">/</span> total_people2 <span class="op">*</span> <span class="dv">100</span> <span class="cf">for</span> n <span class="kw">in</span> mayonnaise_consumption2_number]</span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>mayonnaise_consumption3_number <span class="op">=</span> [n <span class="op">/</span> total_people3 <span class="op">*</span> <span class="dv">100</span> <span class="cf">for</span> n <span class="kw">in</span> mayonnaise_consumption3_number]</span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>                                           </span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>fig, (ax1, ax2, ax3) <span class="op">=</span> plt.subplots(<span class="dv">1</span>, <span class="dv">3</span>, figsize<span class="op">=</span>(<span class="dv">10</span>, <span class="dv">3</span>), gridspec_kw<span class="op">=</span>{<span class="st">'width_ratios'</span>: [<span class="dv">3</span>, <span class="dv">3</span>, <span class="dv">1</span>], <span class="st">'wspace'</span>:<span class="dv">0</span>}, sharex<span class="op">=</span><span class="va">True</span>, sharey<span class="op">=</span><span class="va">True</span>, num<span class="op">=</span><span class="st">'dot_n_bar'</span>)</span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>fig.suptitle(<span class="st">'Mayonnaise usage frequency (2021)'</span>, fontsize<span class="op">=</span><span class="dv">14</span>)</span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>fig.subplots_adjust(top<span class="op">=</span><span class="fl">0.8</span>)</span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a><span class="co"># Dot plot (using scatter plot)</span></span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>dot_plot(ax<span class="op">=</span>ax1, x_values<span class="op">=</span>mayonnaise_consumption1_number, y_values<span class="op">=</span>mayonnaise_consumption[<span class="st">'Group'</span>], color<span class="op">=</span><span class="st">'b'</span>)</span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a>dot_plot(ax<span class="op">=</span>ax1, x_values<span class="op">=</span>mayonnaise_consumption2_number, y_values<span class="op">=</span>mayonnaise_consumption[<span class="st">'Group'</span>], color<span class="op">=</span><span class="st">'g'</span>)</span>
+<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a>dot_plot(ax<span class="op">=</span>ax1, x_values<span class="op">=</span>mayonnaise_consumption3_number, y_values<span class="op">=</span>mayonnaise_consumption[<span class="st">'Group'</span>], color<span class="op">=</span><span class="st">'r'</span>)</span>
+<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a>set_axis(ax<span class="op">=</span>ax1, title<span class="op">=</span><span class="st">'Dot plot'</span>, xlabel<span class="op">=</span><span class="st">'Percent'</span>)</span>
+<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a><span class="co"># Bar plot </span></span>
+<span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a>y_pos <span class="op">=</span> np.arange(<span class="bu">len</span>(mayonnaise_consumption1_number))</span>
+<span id="cb2-23"><a href="#cb2-23" aria-hidden="true" tabindex="-1"></a>set_axis(ax<span class="op">=</span>ax2, title<span class="op">=</span><span class="st">'Bar plot'</span>, xlabel<span class="op">=</span><span class="st">'Percent'</span>)</span>
+<span id="cb2-24"><a href="#cb2-24" aria-hidden="true" tabindex="-1"></a>ax2.barh(y_pos<span class="op">-</span><span class="fl">0.3</span>, mayonnaise_consumption1_number, height<span class="op">=</span><span class="fl">0.2</span>, align<span class="op">=</span><span class="st">'edge'</span>, color<span class="op">=</span><span class="st">'b'</span>)</span>
+<span id="cb2-25"><a href="#cb2-25" aria-hidden="true" tabindex="-1"></a>ax2.barh(y_pos<span class="op">-</span><span class="fl">0.1</span>, mayonnaise_consumption2_number, height<span class="op">=</span><span class="fl">0.2</span>, align<span class="op">=</span><span class="st">'edge'</span>, color<span class="op">=</span><span class="st">'g'</span>)</span>
+<span id="cb2-26"><a href="#cb2-26" aria-hidden="true" tabindex="-1"></a>ax2.barh(y_pos<span class="op">+</span><span class="fl">0.1</span>, mayonnaise_consumption3_number, height<span class="op">=</span><span class="fl">0.2</span>, align<span class="op">=</span><span class="st">'edge'</span>, color<span class="op">=</span><span class="st">'r'</span>)</span>
+<span id="cb2-27"><a href="#cb2-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-28"><a href="#cb2-28" aria-hidden="true" tabindex="-1"></a><span class="co"># Legend</span></span>
+<span id="cb2-29"><a href="#cb2-29" aria-hidden="true" tabindex="-1"></a>ax3.axis(<span class="st">"off"</span>)</span>
+<span id="cb2-30"><a href="#cb2-30" aria-hidden="true" tabindex="-1"></a>legend <span class="op">=</span> ax3.legend(</span>
+<span id="cb2-31"><a href="#cb2-31" aria-hidden="true" tabindex="-1"></a>    wedges, </span>
+<span id="cb2-32"><a href="#cb2-32" aria-hidden="true" tabindex="-1"></a>    [<span class="st">'the UK'</span>, <span class="st">'Country 2'</span>, <span class="st">'Country 3'</span>],</span>
+<span id="cb2-33"><a href="#cb2-33" aria-hidden="true" tabindex="-1"></a>    title<span class="op">=</span><span class="st">"Countries"</span>,</span>
+<span id="cb2-34"><a href="#cb2-34" aria-hidden="true" tabindex="-1"></a>    bbox_to_anchor<span class="op">=</span>(<span class="fl">1.4</span>, <span class="dv">1</span>)</span>
+<span id="cb2-35"><a href="#cb2-35" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb2-36"><a href="#cb2-36" aria-hidden="true" tabindex="-1"></a>legend.legendHandles[<span class="dv">0</span>].set_color(<span class="st">'b'</span>)</span>
+<span id="cb2-37"><a href="#cb2-37" aria-hidden="true" tabindex="-1"></a>legend.legendHandles[<span class="dv">1</span>].set_color(<span class="st">'g'</span>)</span>
+<span id="cb2-38"><a href="#cb2-38" aria-hidden="true" tabindex="-1"></a>legend.legendHandles[<span class="dv">2</span>].set_color(<span class="st">'r'</span>)</span>
+<span id="cb2-39"><a href="#cb2-39" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-40"><a href="#cb2-40" aria-hidden="true" tabindex="-1"></a>plt.show(<span class="st">'dot_n_bar'</span>)</span>
+<span id="cb2-41"><a href="#cb2-41" aria-hidden="true" tabindex="-1"></a>fig.clear()</span>
+<span id="cb2-42"><a href="#cb2-42" aria-hidden="true" tabindex="-1"></a>plt.close(fig)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display">
+<p><img src="index_files/figure-html/cell-4-output-1.png" class="img-fluid"></p>
+</div>
+</div>
+</section>
+<section id="numerical-quantitative-data" class="level3">
+<h3 class="anchored" data-anchor-id="numerical-quantitative-data">Numerical (quantitative) data</h3>
+<p><u>Numerical data</u> is data in the form of numbers and it allows us to <em>perform arithmetic operations on them</em>. Numerical data should be represented on a number line as the ordering and distance between the numbers hold significant information. Most suitable graphical representations for numerical data are (vertical) <strong>histogram</strong> (<strong>bar chart</strong>), <strong>scatter plot</strong> and <strong>box plot</strong>.</p>
+<p>A scatter plot is the most obvious way to visualise data. It makes the most sense with 2D-3D data, when we need to determine the relation between two or three variables in a dataset. Third dimension can be added as a colour of plotted points.</p>
+<div class="cell" data-tags="[]" data-execution_count="4">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>iris <span class="op">=</span> sns.load_dataset(<span class="st">'iris'</span>)</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>diamonds <span class="op">=</span> sns.load_dataset(<span class="st">'diamonds'</span>)</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>fig, axs <span class="op">=</span> plt.subplots(<span class="dv">2</span>, <span class="dv">2</span>, figsize<span class="op">=</span>(<span class="dv">11</span>, <span class="dv">6</span>), gridspec_kw<span class="op">=</span>{<span class="st">'width_ratios'</span>: [<span class="dv">1</span>, <span class="dv">1</span>], <span class="st">'wspace'</span>:<span class="fl">0.2</span>, <span class="st">'hspace'</span>:<span class="fl">0.5</span>}, num<span class="op">=</span><span class="st">'scatter'</span>)</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>fig.suptitle(<span class="st">'Scatter plot examples'</span>, fontsize<span class="op">=</span><span class="dv">14</span>)</span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>fig.subplots_adjust(top<span class="op">=</span><span class="fl">0.8</span>)</span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a><span class="co"># iris</span></span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>sns.scatterplot(ax<span class="op">=</span>axs[<span class="dv">0</span>,<span class="dv">0</span>], x<span class="op">=</span><span class="st">"sepal_length"</span>, y<span class="op">=</span><span class="st">"sepal_width"</span>, hue<span class="op">=</span><span class="st">"species"</span>, linewidth<span class="op">=</span><span class="dv">0</span>, data<span class="op">=</span>iris, legend<span class="op">=</span><span class="va">False</span>).set_title(<span class="st">'Iris species by sepal width and length'</span>)</span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>sns.scatterplot(ax<span class="op">=</span>axs[<span class="dv">0</span>,<span class="dv">1</span>], x<span class="op">=</span><span class="st">"sepal_length"</span>, y<span class="op">=</span><span class="st">"petal_length"</span>, hue<span class="op">=</span><span class="st">"species"</span>, linewidth<span class="op">=</span><span class="dv">0</span>, data<span class="op">=</span>iris).set_title(<span class="st">'Iris species by sepal and petal lengths'</span>)</span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>sns.scatterplot(ax<span class="op">=</span>axs[<span class="dv">1</span>,<span class="dv">1</span>], x<span class="op">=</span><span class="st">"petal_width"</span>, y<span class="op">=</span><span class="st">"petal_length"</span>, hue<span class="op">=</span><span class="st">"species"</span>, linewidth<span class="op">=</span><span class="dv">0</span>, data<span class="op">=</span>iris, legend<span class="op">=</span><span class="va">False</span>).set_title(<span class="st">'Iris species by petal width and length'</span>)</span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>sns.scatterplot(ax<span class="op">=</span>axs[<span class="dv">1</span>,<span class="dv">0</span>], x<span class="op">=</span><span class="st">"carat"</span>, y<span class="op">=</span><span class="st">"depth"</span>, hue<span class="op">=</span><span class="st">"price"</span>, data<span class="op">=</span>diamonds).set_title(<span class="st">'Diamond price by its carat (weight) and depth (height)'</span>)</span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a>plt.show(<span class="st">'scatter'</span>)</span>
+<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a>fig.clear()</span>
+<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a>plt.close(fig)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display">
+<p><img src="index_files/figure-html/cell-5-output-1.png" class="img-fluid"></p>
+</div>
+</div>
+<p>A histogram can be seen as a type of bar chart, but it has the following key differences:</p>
+<ul>
+<li>A histogram shows distribution, so ordering of the value axis is important. With categorical data, order of bars or columns in a bar chart doesn’t matter.</li>
+<li>In a histogram, data points are grouped into bins (small value ranges) based on their value and then counted. In a bar chart, data points for each category are counted separately, so there can be space between bars (axis is not numerical). Histogram doesn’t have space between bars, because it shows a continuous range of values (axis is numerical).</li>
+</ul>
+<p>There are different types of histograms:</p>
+<ul>
+<li>A <strong>frequency histogram</strong> shows number of occurrences (observations) in each bin.</li>
+<li>In a <strong>density histogram</strong>, the total area of all bars (blocks) adds to 1. The area of each bar corresponds to the percentage (so it can show a probability). The height of each bar is probability density, calculated using this formula:</li>
+</ul>
+<p><span class="math display">\[\begin{equation} \frac{bin\_observations}{ total\_observations * bin\_width}. \end{equation}\]</span></p>
+<p>Histograms can have various shapes: uniform, unimodal (symmetric), bimodal (two peaks), multimodal (many peaks) and skewed (one peak, but off center). If the histogram is symmetric or uniform, then the mean and the median of a distribution are approximately the same. In case it is skewed, it’s better to use the median.</p>
+<div class="cell" data-execution_count="5">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Histograms</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> set_histaxis(ax, title, xlabel, ylabel):</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>    ax.set_xlabel(xlabel)</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>    ax.set_ylabel(ylabel)</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>    ax.set_title(title)</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>    ax.autoscale()</span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>    ax.grid(which<span class="op">=</span><span class="st">'major'</span>, linestyle<span class="op">=</span><span class="st">'-'</span>, linewidth<span class="op">=</span><span class="st">'0.5'</span>, color<span class="op">=</span><span class="st">'grey'</span>)</span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>fig, (ax1, ax2, ax3) <span class="op">=</span> plt.subplots(<span class="dv">1</span>, <span class="dv">3</span>, figsize<span class="op">=</span>(<span class="dv">12</span>, <span class="dv">3</span>), gridspec_kw<span class="op">=</span>{<span class="st">'width_ratios'</span>: [<span class="dv">3</span>, <span class="dv">3</span>, <span class="dv">3</span>], <span class="st">'wspace'</span>:<span class="fl">0.3</span>}, sharex<span class="op">=</span><span class="va">False</span>, num<span class="op">=</span><span class="st">'histograms'</span>)</span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>fig.suptitle(<span class="st">'Waiting time between eruptions for the Old Faithful geyser </span><span class="ch">\n</span><span class="st"> in Yellowstone National Park, Wyoming, USA.'</span>, fontsize<span class="op">=</span><span class="dv">14</span>)</span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>fig.subplots_adjust(top<span class="op">=</span><span class="fl">0.7</span>)</span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> sns.load_dataset(<span class="st">'geyser'</span>)</span>
+<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a>values, counts <span class="op">=</span> np.unique(df[<span class="st">'waiting'</span>], return_counts<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a>v_range <span class="op">=</span> np.<span class="bu">min</span>(values), np.<span class="bu">max</span>(values)</span>
+<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a>c_range <span class="op">=</span> np.<span class="bu">min</span>(counts), np.<span class="bu">max</span>(counts)</span>
+<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a><span class="co"># Bar plot</span></span>
+<span id="cb4-21"><a href="#cb4-21" aria-hidden="true" tabindex="-1"></a>sns.countplot(ax<span class="op">=</span>ax1, data<span class="op">=</span>df, x<span class="op">=</span><span class="st">'waiting'</span>)</span>
+<span id="cb4-22"><a href="#cb4-22" aria-hidden="true" tabindex="-1"></a>set_histaxis(ax<span class="op">=</span>ax1, title<span class="op">=</span><span class="st">'Bar plot'</span>, xlabel<span class="op">=</span><span class="st">'Time (s)'</span>, ylabel<span class="op">=</span><span class="st">'Counts'</span>)</span>
+<span id="cb4-23"><a href="#cb4-23" aria-hidden="true" tabindex="-1"></a>ax1.set_xticks(ax1.get_xticks()[::<span class="dv">5</span>])</span>
+<span id="cb4-24"><a href="#cb4-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-25"><a href="#cb4-25" aria-hidden="true" tabindex="-1"></a><span class="co"># Histograms</span></span>
+<span id="cb4-26"><a href="#cb4-26" aria-hidden="true" tabindex="-1"></a>bins <span class="op">=</span> <span class="dv">12</span></span>
+<span id="cb4-27"><a href="#cb4-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-28"><a href="#cb4-28" aria-hidden="true" tabindex="-1"></a><span class="co"># Freq histogram</span></span>
+<span id="cb4-29"><a href="#cb4-29" aria-hidden="true" tabindex="-1"></a>sns.histplot(ax<span class="op">=</span>ax2, data<span class="op">=</span>df, x<span class="op">=</span><span class="st">'waiting'</span>, stat<span class="op">=</span><span class="st">'count'</span>, bins<span class="op">=</span>bins)</span>
+<span id="cb4-30"><a href="#cb4-30" aria-hidden="true" tabindex="-1"></a>set_histaxis(ax<span class="op">=</span>ax2, title<span class="op">=</span><span class="ss">f'Frequency histogram, </span><span class="sc">{</span>bins<span class="sc">}</span><span class="ss"> bins'</span>, xlabel<span class="op">=</span><span class="st">'Time (s)'</span>, ylabel<span class="op">=</span><span class="st">'Frequency'</span>)</span>
+<span id="cb4-31"><a href="#cb4-31" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-32"><a href="#cb4-32" aria-hidden="true" tabindex="-1"></a><span class="co"># Density histogram</span></span>
+<span id="cb4-33"><a href="#cb4-33" aria-hidden="true" tabindex="-1"></a>sns.histplot(ax<span class="op">=</span>ax3, data<span class="op">=</span>df, x<span class="op">=</span><span class="st">'waiting'</span>, stat<span class="op">=</span><span class="st">'density'</span>, bins<span class="op">=</span>bins)</span>
+<span id="cb4-34"><a href="#cb4-34" aria-hidden="true" tabindex="-1"></a>set_histaxis(ax<span class="op">=</span>ax3, title<span class="op">=</span><span class="ss">f'Density histogram, </span><span class="sc">{</span>bins<span class="sc">}</span><span class="ss"> bins'</span>, xlabel<span class="op">=</span><span class="st">'Time (s)'</span>, ylabel<span class="op">=</span><span class="st">'Density'</span>)</span>
+<span id="cb4-35"><a href="#cb4-35" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-36"><a href="#cb4-36" aria-hidden="true" tabindex="-1"></a>plt.show(<span class="st">'histograms'</span>)</span>
+<span id="cb4-37"><a href="#cb4-37" aria-hidden="true" tabindex="-1"></a>fig.clear()</span>
+<span id="cb4-38"><a href="#cb4-38" aria-hidden="true" tabindex="-1"></a>plt.close(fig)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display">
+<p><img src="index_files/figure-html/cell-6-output-1.png" class="img-fluid"></p>
+</div>
+</div>
+<p>A box plots displays <em>five-number summary</em> of a distribution: the minimum, the maximum, the median and the first and third quartiles. When we have several variables, visualising their distributions using a box plot (box and whisker plot) allows us to get all the essential information and compare them quickly and easily.</p>
+<div id="fig-box_plot" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="box_plot.jpg" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">Figure&nbsp;2: Box and whisker plot</figcaption>
+</figure>
+</div>
+<p>There’s another type of plot, similar to box plot – <strong>violin plot</strong>. In addition to five-number summary, it also shows kernel density plot. In simple words, kernel density plot is an estimation of the probability density function for a distribution. We can get an estimated probability density function for a distribution by interpolating or smoothing its density histogram.</p>
+<div class="cell" data-execution_count="6">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Load the example tips dataset</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>exercise <span class="op">=</span> sns.load_dataset(<span class="st">'exercise'</span>)</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>palette <span class="op">=</span> <span class="st">"pastel"</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>fig, (ax1, ax2) <span class="op">=</span> plt.subplots(<span class="dv">1</span>, <span class="dv">2</span>, figsize<span class="op">=</span>(<span class="dv">12</span>, <span class="dv">4</span>), gridspec_kw<span class="op">=</span>{<span class="st">'width_ratios'</span>: [<span class="dv">1</span>, <span class="dv">1</span>], <span class="st">'wspace'</span>:<span class="dv">0</span>}, sharex<span class="op">=</span><span class="va">True</span>, sharey<span class="op">=</span><span class="va">True</span>, num<span class="op">=</span><span class="st">'boxplot'</span>)</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>sns.boxplot(ax<span class="op">=</span>ax1, data<span class="op">=</span>exercise, x<span class="op">=</span><span class="st">'kind'</span>, y<span class="op">=</span><span class="st">'pulse'</span>, hue<span class="op">=</span><span class="st">'diet'</span>, width<span class="op">=</span><span class="fl">0.3</span>, palette<span class="op">=</span>palette)</span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>ax1.get_legend().remove()</span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>ax1.set_title(<span class="st">'Box plot'</span>)</span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>ax1.set_xlabel(<span class="st">'Activity'</span>)</span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>ax1.set_ylabel(<span class="st">'Pulse'</span>)</span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>ax1.grid(which<span class="op">=</span><span class="st">'major'</span>, linestyle<span class="op">=</span><span class="st">'-'</span>, linewidth<span class="op">=</span><span class="st">'0.5'</span>, color<span class="op">=</span><span class="st">'grey'</span>)</span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>sns.violinplot(ax<span class="op">=</span>ax2, data<span class="op">=</span>exercise, x<span class="op">=</span><span class="st">"kind"</span>, y<span class="op">=</span><span class="st">'pulse'</span>, hue<span class="op">=</span><span class="st">'diet'</span>, split<span class="op">=</span><span class="va">False</span>, inner<span class="op">=</span><span class="st">'box'</span>, linewidth<span class="op">=</span><span class="dv">1</span>, palette<span class="op">=</span>palette)</span>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a>ax2.set_title(<span class="st">'Violin plot'</span>)</span>
+<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a>ax2.set_xlabel(<span class="st">'Kind'</span>)</span>
+<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a>ax2.grid(which<span class="op">=</span><span class="st">'major'</span>, linestyle<span class="op">=</span><span class="st">'-'</span>, linewidth<span class="op">=</span><span class="st">'0.5'</span>, color<span class="op">=</span><span class="st">'grey'</span>)</span>
+<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a>ax2.yaxis.label.set_visible(<span class="va">False</span>)</span>
+<span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a>ax2.legend(title<span class="op">=</span><span class="st">'Diet'</span>, bbox_to_anchor<span class="op">=</span>(<span class="fl">0.3</span>, <span class="dv">1</span>))</span>
+<span id="cb5-20"><a href="#cb5-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-21"><a href="#cb5-21" aria-hidden="true" tabindex="-1"></a>plt.show(<span class="st">'boxplot'</span>)</span>
+<span id="cb5-22"><a href="#cb5-22" aria-hidden="true" tabindex="-1"></a>fig.clear()</span>
+<span id="cb5-23"><a href="#cb5-23" aria-hidden="true" tabindex="-1"></a>plt.close(fig)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display">
+<p><img src="index_files/figure-html/cell-7-output-1.png" class="img-fluid"></p>
+</div>
+</div>
+</section>
+<section id="the-principle-of-small-multiples" class="level3">
+<h3 class="anchored" data-anchor-id="the-principle-of-small-multiples">The principle of small multiples</h3>
+<p>The principle of small multiples is a visualization technique in data analysis and design where multiple similar plots or charts are presented together in a grid or series, each one highlighting a different aspect or variation of the same data set. The idea is that by presenting information in a consistent and easily comparable format, it becomes easier for the viewer to discern patterns and trends within the data. Small multiples can also help to simplify complex data sets by breaking them down into more digestible, bite-sized chunks.</p>
+<blockquote class="blockquote">
+<p>The principle of small multiples was first introduced by the data visualization expert Edward Tufte in his book “The Visual Display of Quantitative Information”, which was published in 1983. Tufte is a well-known expert in the field of information design and has made significant contributions to the field of data visualization.</p>
+</blockquote>
+<div class="cell" data-tags="[]" data-execution_count="7">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>flights <span class="op">=</span> sns.load_dataset(<span class="st">'flights'</span>)</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>ylim <span class="op">=</span> flights[<span class="st">'passengers'</span>].<span class="bu">min</span>()<span class="op">-</span><span class="dv">20</span>, flights[<span class="st">'passengers'</span>].<span class="bu">max</span>()<span class="op">+</span><span class="dv">20</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>sns.set_style(<span class="st">"ticks"</span>,{<span class="st">'axes.grid'</span> : <span class="va">True</span>})</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Initialize a grid of plots with an Axes for each walk</span></span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>grid <span class="op">=</span> sns.FacetGrid(data<span class="op">=</span>flights, col<span class="op">=</span><span class="st">'year'</span>, hue<span class="op">=</span><span class="st">"year"</span>, palette<span class="op">=</span><span class="st">'pastel'</span>, sharex<span class="op">=</span><span class="va">True</span>, col_wrap<span class="op">=</span><span class="dv">4</span>, height<span class="op">=</span><span class="dv">2</span>)</span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>grid.refline(y<span class="op">=</span>flights[<span class="st">'passengers'</span>].median())</span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Draw a line plot to show the trajectory of each random walk</span></span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>grid.<span class="bu">map</span>(plt.plot, <span class="st">"month"</span>, <span class="st">"passengers"</span>, marker<span class="op">=</span><span class="st">"o"</span>)</span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Adjust the tick positions and labels</span></span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a>grid.<span class="bu">set</span>(ylim<span class="op">=</span>ylim, xticks<span class="op">=</span>[<span class="st">'Jan'</span>, <span class="st">'Feb'</span>, <span class="st">'Mar'</span>, <span class="st">'Apr'</span>, <span class="st">'May'</span>, <span class="st">'Jun'</span>, <span class="st">'Jul'</span>, <span class="st">'Aug'</span>, <span class="st">'Sep'</span>, <span class="st">'Oct'</span>, <span class="st">'Nov'</span>, <span class="st">'Dec'</span>])</span>
+<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> ax <span class="kw">in</span> grid.axes.flat:</span>
+<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> label <span class="kw">in</span> ax.get_xticklabels():</span>
+<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a>        label.set_rotation(<span class="dv">90</span>)</span>
+<span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a>        label.set_size(<span class="dv">9</span>)</span>
+<span id="cb6-19"><a href="#cb6-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-20"><a href="#cb6-20" aria-hidden="true" tabindex="-1"></a><span class="co"># Adjust the arrangement of the plots</span></span>
+<span id="cb6-21"><a href="#cb6-21" aria-hidden="true" tabindex="-1"></a>grid.fig.tight_layout(w_pad<span class="op">=</span><span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display">
+<p><img src="index_files/figure-html/cell-8-output-1.png" class="img-fluid"></p>
+</div>
+</div>
+</section>
+</section>
+<section id="inferential-statistics-statistical-inference" class="level2">
+<h2 class="anchored" data-anchor-id="inferential-statistics-statistical-inference">Inferential statistics (Statistical inference)</h2>
+<p>TODO - this section will be updated later..</p>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+</body></html>

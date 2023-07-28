@@ -1,9 +1,10 @@
 [
   {
-    "listing": "/index.html",
+    "listing": "/index2.html",
     "items": [
-      "/posts/post-with-code/index.html",
-      "/posts/welcome/index.html"
+      "/posts/topic_statistics/3_estd_laws/index.html",
+      "/posts/topic_statistics/2_prob_basics/index.html",
+      "/posts/topic_statistics/1_intro/index.html"
     ]
   }
 ]
