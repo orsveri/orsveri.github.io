@@ -1,0 +1,11 @@
+{
+  "hash": "a4f0a252dbae49b4a34f035e609485f8",
+  "result": {
+    "markdown": "---\ntitle: Statistics post\ntitle-block-banner: image.jpg\nauthor: orsveri\ndate: '2023-02-09'\ncategories:\n  - news\n  - code\n  - analysis\nimage: image.jpg\n---\n\nThis is a post with executable code.\n\n::: {.cell execution_count=1}\n``` {.python .cell-code}\n1 + 1\n```\n\n::: {.cell-output .cell-output-display execution_count=2}\n```\n2\n```\n:::\n:::\n\n\n",
+    "supporting": [
+      "index_files"
+    ],
+    "filters": [],
+    "includes": {}
+  }
+}
